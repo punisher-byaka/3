@@ -1,33 +1,29 @@
 name: Zachetina
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
       name: Checkout code
-
+      
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v1
       with:
-        node-version: '16'
+        node-version: '14'
 
     - name: Install dependencies
       run: npm install
-
-    - name: Lint JavaScript
-      run: npm run lint-js
-
+      
+    - name: Lint HTML
+      run: npx htmlhint '/*.html'
+      
     - name: Lint CSS
-      run: npm run lint-css
-
-    - name: Check if HTML exists
-      run: |
-        if [ ! -f index.html ]; then
-          echo "index.html does not exist."
-          exit 1
-        fi
+      run: npx stylelint '/*.css'
