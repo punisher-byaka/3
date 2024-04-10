@@ -18,8 +18,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # Удалены шаги линтинга JavaScript и CSS файлов, а также валидация HTML файлов
 
-    # Шаг проверки сборки
     - name: Build
       run: npm run build
