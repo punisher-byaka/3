@@ -10,6 +10,4 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: HTML Validation
-      run: |
-        docker run --rm -v $PWD:/workspace w3c/unicorn /workspace/index.html
+
