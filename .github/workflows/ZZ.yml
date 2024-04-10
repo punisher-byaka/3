@@ -10,4 +10,15 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-
+    - name: Check HTML/CSS Files
+      run: |
+        if ls *.html >/dev/null 2>&1; then
+          echo "HTML files found."
+        else
+          echo "No HTML files found." && exit 1
+        fi
+        if ls *.css >/dev/null 2>&1; then
+          echo "CSS files found."
+        else
+          echo "No CSS files found." && exit 1
+        fi
